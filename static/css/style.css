@@ -1,0 +1,67 @@
+*{
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	list-style: none;
+}
+
+.toggle_menu{
+	position: fixed;
+	padding: 15px 20px 15px 15px;
+	margin-top: 70px;
+	color: white;
+	cursor: pointer;
+	background-color: #648879;
+	z-index: 1000000;
+	font-size: 2em;
+	opacity: 0;		
+}
+
+.sidebar_menu{
+	position: fixed;
+	width: 250px;
+	margin-left: 0px;
+	overflow: hidden;
+	height: 100vh;
+	background-color: red;
+	max-height: 100vh;
+	background-color: rgba(17,17,17,0.9);
+	opacity: 0.9;
+	transition: all 0.3s ease-in-out;
+}
+
+.fa-times{
+	right: 10px;
+	top:10px;
+	opacity: 0.7;
+	cursor: pointer;
+	position: absolute;
+	color: white;
+	transition: all 0.3s ease-in-out;
+}
+
+.boxed_item{
+	font-family: 'Open Sans';
+	font-weight: 100;
+	padding: 10px 20px;
+	display: inline-block;
+	border: solid 2px white;
+	box-sizing: border-box;
+	font-size: 22px;
+	color: white;
+	text-align: center;
+	margin-top: 70px;
+}
+
+.logo_bold{
+	font-weight: 800;
+}
+
+.logo_title{
+	color: white;
+	font-family: 'Open Sans';
+	font-weight: 200;
+	font-size: 12px;
+	text-align: center;
+	padding: 5px 0;
+}

@@ -1,10 +1,10 @@
-from flask import Flask, json
+from flask import Flask, render_template, json
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    return "hola desde index"
+    return render_template("index.html")
 
 
 @app.route("/api/todo")
