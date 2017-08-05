@@ -5,6 +5,12 @@
 	list-style: none;
 }
 
+#map{
+	background-image: url("googlemaps.png");
+    width: 100%;
+    height: 100%;
+}
+
 .toggle_menu{
 	position: fixed;
 	padding: 15px 20px 15px 15px;
@@ -19,15 +25,15 @@
 
 .sidebar_menu{
 	position: fixed;
-	width: 250px;
+	width: 400px;
 	margin-left: 0px;
 	overflow: hidden;
 	height: 100vh;
 	background-color: red;
 	max-height: 100vh;
-	background-color: rgba(17,17,17,0.9);
+	background-color: #fff;
 	opacity: 0.9;
-	transition: all 0.3s ease-in-out;
+	transition: all 0.2s ease-in-out;
 }
 
 .fa-times{
@@ -37,7 +43,7 @@
 	cursor: pointer;
 	position: absolute;
 	color: white;
-	transition: all 0.3s ease-in-out;
+	transition: all 0.8s ease-in-out;
 }
 
 .boxed_item{
@@ -64,4 +70,51 @@
 	font-size: 12px;
 	text-align: center;
 	padding: 5px 0;
+}
+
+.navigation_selection{
+	margin: 20px 0;
+	display: block;
+	width: 200px;
+	margin-left: 25px;
+}
+
+.navigation_item{
+	font-weight: 400;
+	font-family: 'Open Sans';
+	padding: 12px 0;
+	box-sizing: border-box;
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.87);
+	border-bottom: solid 1px #D8D8D8; 
+	transition: all 0.8s ease-in-out;
+	cursor: pointer;
+}
+
+.boxed_item_smaller{
+	font-size: 12px;
+	color: #D8D8D8;
+	width: 200px;
+	transition: all 0.8s ease-in-out;
+	cursor: pointer;
+	border-width: 1px;
+	margin: 0 0 20px 0;
+}
+
+.boxed_item_smaller:hover{
+	background-color: white;
+	color: #111;
+	transition: all 0.8s ease-in-out;
+}
+
+.hide_menu{
+	margin-left: -4000px;
+}
+
+.opacity_one{
+	opacity: 1;
+}
+
+.config{
+	background: #4285F4;
 }
