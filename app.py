@@ -7,6 +7,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/material")
+def material():
+    return render_template("material.html")
+
+
 @app.route("/api/todo")
 def todo():
     data = [
