@@ -7,12 +7,15 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Bootstrap 101 Template</title>
 
-    <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Lite -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../static/css/material.min.colors.css">
-    
+    <style>
+      #map{
+        width: 100%;
+        height: 100%;   
+      }
+    </style>
   </head>
   <body>
   <!-- Always shows a header, even in smaller screens. -->
@@ -20,66 +23,149 @@
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
         <!-- Title -->
-        <span class="mdl-layout-title">Title</span>
+        <span class="mdl-layout-title">Recorrido</span>
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
-        <!-- Navigation. We hide it in small screens. -->
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-        </nav>
+        <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+          <li class="mdl-menu__item">Mazatlan</li>
+          <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Irapuato</li>
+          <li disabled class="mdl-menu__item">Juarez</li>
+          <li class="mdl-menu__item">Culiacan</li>
+        </ul>
       </div>
     </header>
     <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Title</span>
+      <span class="mdl-layout-title">Recorrido</span>
+      <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+        <select class="mdl-selectfield__select" id="professsion2" name="professsion">
+          <option value=""></option>
+          <option value="option1">Mazatlan</option>
+          <option value="option2">Cualiacan</option>
+          <option value="option3">Irapuado</option>
+          <option value="option4">Juarez</option>
+        </select>
+        <label class="mdl-selectfield__label" for="professsion2">Profession</label>
+      </div>
+      <input type="date" name="bday">
+      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash1">
+        <input checked class="mdl-radio__button" id="flash1" name="flash" type="radio"
+         value="on">
+        <span class="mdl-radio__label">Recorrido Día</span>
+      </label>
+      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash2">
+        <input class="mdl-radio__button" id="flash2" name="flash" type="radio" value="off">
+        <span class="mdl-radio__label">Recorrido Semanal</span>
+      </label>
+      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash3">
+        <input class="mdl-radio__button" id="flash3" name="flash" type="radio" value="auto">
+        <span class="mdl-radio__label">Recorrido Total</span>
+      </label>
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
+        <div class="mdl-tabs mdl-js-tabs">
+          <div class="mdl-tabs__tab-bar">
+             <a href="#tab1-panel" class="mdl-tabs__tab is-active">Rutas</a>
+             <a href="#tab2-panel" class="mdl-tabs__tab">Recorrido</a>
+             <a href="#tab3-panel" class="mdl-tabs__tab">Emojis</a>
+          </div>
+          <div class="mdl-tabs__panel is-active" id="tab1-panel">
+              <ul class="demo-list-two mdl-list">
+                <li class="mdl-list__item mdl-list__item--two-line">
+                  <span class="mdl-list__item-primary-content">
+                    <span>Bryan Cranston</span>
+                    <span class="mdl-list__item-sub-title">62 Episodes</span>
+                  </span>
+                </li>
+                <li class="mdl-list__item mdl-list__item--two-line">
+                  <span class="mdl-list__item-primary-content">
+                    <span>Bryan Cranston</span>
+                    <span class="mdl-list__item-sub-title">62 Episodes</span>
+                  </span>
+                </li>
+                <li class="mdl-list__item mdl-list__item--two-line">
+                  <span class="mdl-list__item-primary-content">
+                    <span>Bryan Cranston</span>
+                    <span class="mdl-list__item-sub-title">62 Episodes</span>
+                  </span>
+                </li>
+                <li class="mdl-list__item mdl-list__item--two-line">
+                  <span class="mdl-list__item-primary-content">
+                    <span>Bryan Cranston</span>
+                    <span class="mdl-list__item-sub-title">62 Episodes</span>
+                  </span>
+                </li>
+                <li class="mdl-list__item mdl-list__item--two-line">
+                  <span class="mdl-list__item-primary-content">
+                    <span>Bryan Cranston</span>
+                    <span class="mdl-list__item-sub-title">62 Episodes</span>
+                  </span>
+                </li>
+                <a class="mdl-navigation__link" href="">Link</a>
+              </ul>
+          </div>
+          <div class="mdl-tabs__panel" id="tab2-panel">
+             <p>Tab 2 Content</p>
+          </div>
+          <div class="mdl-tabs__panel" id="tab3-panel">
+             <p>Tab 3 Content</p>
+          </div>
+        </div>
       </nav>
     </div>
     <main class="mdl-layout__content">
-      <div class="page-content"><!-- Your content goes here --></div>
-    </main>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="jumbotron">
-          <h1>Hello, world!</h1>
-          <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-          <p>
-            <button class="mdl-button mdl-js-button mdl-button--raised">
-              Button
-            </button>
-          </p>
+      <div class="page-content">
+          <img id="map" src="../static/css/googlemaps.png" alt="">
+       <div>
+          <table class="mdl-data-table mdl-js-data-table">
+            <thead>
+              <tr>
+                <th class="mdl-data-table__cell--non-numeric">Name</th>
+                <th class="mdl-data-table__cell--non-numeric">Nickname</th>
+                <th>Age</th>
+                <th class="mdl-data-table__cell--non-numeric">Living?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mdl-data-table__cell--non-numeric">John Lennon</td>
+                <td class="mdl-data-table__cell--non-numeric">The smart one</td>
+                <td>40</td>
+                <td class="mdl-data-table__cell--non-numeric">No</td>
+              </tr>
+              <tr>
+                <td class="mdl-data-table__cell--non-numeric">Paul McCartney</td>
+                <td class="mdl-data-table__cell--non-numeric">The cute one</td>
+                <td>73</td>
+                <td class="mdl-data-table__cell--non-numeric">Yes</td>
+              </tr>
+              <tr>
+                <td class="mdl-data-table__cell--non-numeric">George Harrison</td>
+                <td class="mdl-data-table__cell--non-numeric">The shy one</td>
+                <td>58</td>
+                <td class="mdl-data-table__cell--non-numeric">No</td>
+              </tr>
+              <tr>
+                <td class="mdl-data-table__cell--non-numeric">Ringo Starr</td>
+                <td class="mdl-data-table__cell--non-numeric">The funny one</td>
+                <td>74</td>
+                <td class="mdl-data-table__cell--non-numeric">Yes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h1>Material Design by Jesus Salas</h1>
+        <div class="mdl-grid">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Presiona color primario</button>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Presiona color Secundario</button>
         </div>
       </div>
-    </div>
-    <h1>Material Design by Jesus Salas</h1>
-    <div class="mdl-grid">
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Presiona color primario</button>
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Presiona color Secundario</button>
-    </div>
+    </main>
   </div>
-    
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../static/js/bootstrap.min.js"></script>
-    
     <script defer src="../static/js/material.min.js"></script>
 
   </body>
