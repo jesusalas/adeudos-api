@@ -19,150 +19,313 @@
   </head>
   <body>
   <!-- Always shows a header, even in smaller screens. -->
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Recorrido</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+            <li class="mdl-menu__item">Mazatlan</li>
+            <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Irapuato</li>
+            <li disabled class="mdl-menu__item">Juarez</li>
+            <li class="mdl-menu__item">Culiacan</li>
+          </ul>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Recorrido</span>
-        <!-- Add spacer, to align navigation to the right -->
-        <div class="mdl-layout-spacer"></div>
-        <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
-          <i class="material-icons">more_vert</i>
-        </button>
-        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
-          <li class="mdl-menu__item">Mazatlan</li>
-          <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Irapuato</li>
-          <li disabled class="mdl-menu__item">Juarez</li>
-          <li class="mdl-menu__item">Culiacan</li>
-        </ul>
+        <input type="date" name="bday">
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash1">
+          <input checked class="mdl-radio__button" id="flash1" name="flash" type="radio"
+           value="on">
+          <span class="mdl-radio__label">Recorrido Día</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash2">
+          <input class="mdl-radio__button" id="flash2" name="flash" type="radio" value="off">
+          <span class="mdl-radio__label">Recorrido Semanal</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash3">
+          <input class="mdl-radio__button" id="flash3" name="flash" type="radio" value="auto">
+          <span class="mdl-radio__label">Recorrido Total</span>
+        </label>
+        <nav class="mdl-navigation">
+          <div class="mdl-tabs mdl-js-tabs">
+            <ul class="demo-list-two mdl-list">
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                  <span>RUTA ALMZT-101</span>
+                  <span class="mdl-list__item-sub-title">Recorrido 100 km</span>
+                </span>
+              </li>
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                  <span>RUTA ALMZT-102</span>
+                  <span class="mdl-list__item-sub-title">Recorrido 70 km</span>
+                </span>
+              </li>
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                  <span>RUTA ALMZT-103</span>
+                  <span class="mdl-list__item-sub-title">Recorrido 80 km</span>
+                </span>
+              </li>
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                  <span>RUTA ALMZT-104</span>
+                  <span class="mdl-list__item-sub-title">Recorrido 120 km</span>
+                </span>
+              </li>
+              <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                  <span>RUTA ALMZT-105</span>
+                  <span class="mdl-list__item-sub-title">Recorrido 85 km</span>
+                </span>
+              </li>
+              <a class="mdl-navigation__link" href="">Link</a>
+            </ul>
+          </div>
+        </nav>
       </div>
-    </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Recorrido</span>
-      <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-        <select class="mdl-selectfield__select" id="professsion2" name="professsion">
-          <option value=""></option>
-          <option value="option1">Mazatlan</option>
-          <option value="option2">Cualiacan</option>
-          <option value="option3">Irapuado</option>
-          <option value="option4">Juarez</option>
-        </select>
-        <label class="mdl-selectfield__label" for="professsion2">Profession</label>
-      </div>
-      <input type="date" name="bday">
-      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash1">
-        <input checked class="mdl-radio__button" id="flash1" name="flash" type="radio"
-         value="on">
-        <span class="mdl-radio__label">Recorrido Día</span>
-      </label>
-      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash2">
-        <input class="mdl-radio__button" id="flash2" name="flash" type="radio" value="off">
-        <span class="mdl-radio__label">Recorrido Semanal</span>
-      </label>
-      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash3">
-        <input class="mdl-radio__button" id="flash3" name="flash" type="radio" value="auto">
-        <span class="mdl-radio__label">Recorrido Total</span>
-      </label>
-      <nav class="mdl-navigation">
-        <div class="mdl-tabs mdl-js-tabs">
-          <div class="mdl-tabs__tab-bar">
-             <a href="#tab1-panel" class="mdl-tabs__tab is-active">Rutas</a>
-             <a href="#tab2-panel" class="mdl-tabs__tab">Recorrido</a>
-             <a href="#tab3-panel" class="mdl-tabs__tab">Emojis</a>
-          </div>
-          <div class="mdl-tabs__panel is-active" id="tab1-panel">
-              <ul class="demo-list-two mdl-list">
-                <li class="mdl-list__item mdl-list__item--two-line">
-                  <span class="mdl-list__item-primary-content">
-                    <span>Bryan Cranston</span>
-                    <span class="mdl-list__item-sub-title">62 Episodes</span>
-                  </span>
-                </li>
-                <li class="mdl-list__item mdl-list__item--two-line">
-                  <span class="mdl-list__item-primary-content">
-                    <span>Bryan Cranston</span>
-                    <span class="mdl-list__item-sub-title">62 Episodes</span>
-                  </span>
-                </li>
-                <li class="mdl-list__item mdl-list__item--two-line">
-                  <span class="mdl-list__item-primary-content">
-                    <span>Bryan Cranston</span>
-                    <span class="mdl-list__item-sub-title">62 Episodes</span>
-                  </span>
-                </li>
-                <li class="mdl-list__item mdl-list__item--two-line">
-                  <span class="mdl-list__item-primary-content">
-                    <span>Bryan Cranston</span>
-                    <span class="mdl-list__item-sub-title">62 Episodes</span>
-                  </span>
-                </li>
-                <li class="mdl-list__item mdl-list__item--two-line">
-                  <span class="mdl-list__item-primary-content">
-                    <span>Bryan Cranston</span>
-                    <span class="mdl-list__item-sub-title">62 Episodes</span>
-                  </span>
-                </li>
-                <a class="mdl-navigation__link" href="">Link</a>
-              </ul>
-          </div>
-          <div class="mdl-tabs__panel" id="tab2-panel">
-             <p>Tab 2 Content</p>
-          </div>
-          <div class="mdl-tabs__panel" id="tab3-panel">
-             <p>Tab 3 Content</p>
-          </div>
-        </div>
-      </nav>
-    </div>
-    <main class="mdl-layout__content">
-      <div class="page-content">
+      <main class="mdl-layout__content">
+        <div class="page-content">
           <img id="map" src="../static/css/googlemaps.png" alt="">
-       <div>
-          <table class="mdl-data-table mdl-js-data-table">
-            <thead>
-              <tr>
-                <th class="mdl-data-table__cell--non-numeric">Name</th>
-                <th class="mdl-data-table__cell--non-numeric">Nickname</th>
-                <th>Age</th>
-                <th class="mdl-data-table__cell--non-numeric">Living?</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">John Lennon</td>
-                <td class="mdl-data-table__cell--non-numeric">The smart one</td>
-                <td>40</td>
-                <td class="mdl-data-table__cell--non-numeric">No</td>
-              </tr>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">Paul McCartney</td>
-                <td class="mdl-data-table__cell--non-numeric">The cute one</td>
-                <td>73</td>
-                <td class="mdl-data-table__cell--non-numeric">Yes</td>
-              </tr>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">George Harrison</td>
-                <td class="mdl-data-table__cell--non-numeric">The shy one</td>
-                <td>58</td>
-                <td class="mdl-data-table__cell--non-numeric">No</td>
-              </tr>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">Ringo Starr</td>
-                <td class="mdl-data-table__cell--non-numeric">The funny one</td>
-                <td>74</td>
-                <td class="mdl-data-table__cell--non-numeric">Yes</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+              <a href="#tab1-panel" class="mdl-tabs__tab is-active">VISITAS</a>
+              <a href="#tab2-panel" class="mdl-tabs__tab">COORDENADAS GPS</a>
+              <a href="#tab3-panel" class="mdl-tabs__tab">CLIENTES DEL DIA</a>
+            </div>
+            <div class="mdl-grid">
+              <div class="mdl-tabs__panel is-active" id="tab1-panel">
+                <table class="mdl-data-table mdl-js-data-table">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th class="mdl-data-table__cell--non-numeric">Establecimiento</th>
+                      <th class="mdl-data-table__cell--non-numeric">Direccion</th>
+                      <th>Hora Inicio</th>
+                      <th>Hora Fin</th>
+                      <th>Latitud</th>
+                      <th>Longitud</th>
+                      <th>Venta</th>
+                      <th class="mdl-data-table__cell--non-numeric">Fuera Recorrido</th>
+                      <th class="mdl-data-table__cell--non-numeric">Visita</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>01</td>
+                      <td class="mdl-data-table__cell--non-numeric">ABARROTES MANUEL</td>
+                      <td class="mdl-data-table__cell--non-numeric">TOMA DE JUAREZ 1814 FRANCISCO VILLA</td>
+                      <td>09:55:37</td>
+                      <td>10:55:37</td>
+                      <td>23.249393333333334</td>
+                      <td>-106.42659666666665</td>
+                      <td>1500.00</td>
+                      <td>
+                        <label class="mdl-checkbox mdl-js-checkbox" for="checkbox-1">
+                          <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="mdl-checkbox mdl-js-checkbox" for="checkbox-1">
+                          <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+                        </label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>02</td>
+                      <td class="mdl-data-table__cell--non-numeric">ABARROTES ZAMORA</td>
+                      <td class="mdl-data-table__cell--non-numeric">TOMA DE TORREON 224 FRANCISCO VILLA</td>
+                      <td>08:55:37</td>
+                      <td>08:59:37</td>
+                      <td>23.249393333333334</td>
+                      <td>-106.42659666666665</td>
+                      <td>1500.00</td>
+                      <td>
+                        <label class="mdl-checkbox mdl-js-checkbox" for="checkbox-1">
+                          <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
+                        </label>
+                      </td>
+                      <td>
+                        <label class="mdl-checkbox mdl-js-checkbox" for="checkbox-1">
+                          <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+                        </label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>03</td>
+                      <td class="mdl-data-table__cell--non-numeric">ESC SEC FED 3</td>
+                      <td class="mdl-data-table__cell--non-numeric">AV BICENTENARIO S/N FRANCISCO VILLA</td>
+                      <td>09:55:37</td>
+                      <td>10:55:37</td>
+                      <td>23.249393333333334</td>
+                      <td>-106.42659666666665</td>
+                      <td>1500.00</td>
+                      <td>
+                        <label class="mdl-checkbox mdl-js-checkbox" for="checkbox-1">
+                          <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="mdl-checkbox mdl-js-checkbox" for="checkbox-1">
+                          <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
+                        </label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>04</td>
+                      <td class="mdl-data-table__cell--non-numeric">UNIVERSIDAD TEC MILENIO</td>
+                      <td class="mdl-data-table__cell--non-numeric">AV LA MARINA SN LA MARINA</td>
+                      <td>12:22:37</td>
+                      <td>12:55:37</td>
+                      <td>23.249393333333334</td>
+                      <td>-106.42659666666665</td>
+                      <td>1500.00</td>
+                      <td>
+                        <label class="mdl-checkbox mdl-js-checkbox" for="checkbox-1">
+                          <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
+                        </label>
+                      </td>
+                      <td>
+                        <label class="mdl-checkbox mdl-js-checkbox" for="checkbox-1">
+                          <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
+                        </label>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="mdl-tabs__panel" id="tab2-panel">
+                <p>Tab 2 Content</p>
+                <table class="mdl-data-table mdl-js-data-table">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Hora</th>
+                      <th>Latitud</th>
+                      <th>Longitud</th>
+                      <th>Velocidad</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>01</td>
+                      <td>09:55:37</td>
+                      <td>23.249393333333334</td>
+                      <td>23.249393333333334</td>
+                      <td>30</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="mdl-tabs__panel" id="tab3-panel">
+                <p>Tab 3 Content</p>
+                <table class="mdl-data-table mdl-js-data-table">
+                  <thead>
+                    <tr>
+                      <th class="mdl-data-table__cell--non-numeric">RUTA ALMZT-101</th>
+                      <th class="mdl-data-table__cell--non-numeric">Nickname</th>
+                      <th>Age</th>
+                      <th class="mdl-data-table__cell--non-numeric">Living?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="mdl-data-table__cell--non-numeric">RUTA ALMZT-102</td>
+                      <td class="mdl-data-table__cell--non-numeric">The smart one</td>
+                      <td>40</td>
+                      <td class="mdl-data-table__cell--non-numeric">No</td>
+                    </tr>
+                    <tr>
+                      <td class="mdl-data-table__cell--non-numeric">RUTA ALMZT-103</td>
+                      <td class="mdl-data-table__cell--non-numeric">The cute one</td>
+                      <td>73</td>
+                      <td class="mdl-data-table__cell--non-numeric">Yes</td>
+                    </tr>
+                    <tr>
+                      <td class="mdl-data-table__cell--non-numeric">RUTA ALMZT-104</td>
+                      <td class="mdl-data-table__cell--non-numeric">The shy one</td>
+                      <td>58</td>
+                      <td class="mdl-data-table__cell--non-numeric">No</td>
+                    </tr>
+                    <tr>
+                      <td class="mdl-data-table__cell--non-numeric">RUTA ALMZT-105</td>
+                      <td class="mdl-data-table__cell--non-numeric">The funny one</td>
+                      <td>74</td>
+                      <td class="mdl-data-table__cell--non-numeric">Yes</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="mdl-grid">
+            <h1>Material Design by Jesus Salas</h1>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Presiona color primario</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Presiona color Secundario</button>
+          </div>
         </div>
-        <h1>Material Design by Jesus Salas</h1>
-        <div class="mdl-grid">
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Presiona color primario</button>
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Presiona color Secundario</button>
-        </div>
-      </div>
-    </main>
-  </div>
+        <footer class="mdl-mega-footer">
+          <div class="mdl-mega-footer__middle-section">
+            <div class="mdl-mega-footer__drop-down-section">
+              <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+              <h1 class="mdl-mega-footer__heading">Features</h1>
+              <ul class="mdl-mega-footer__link-list">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Partners</a></li>
+                <li><a href="#">Updates</a></li>
+              </ul>
+            </div>
+
+            <div class="mdl-mega-footer__drop-down-section">
+              <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+              <h1 class="mdl-mega-footer__heading">Details</h1>
+              <ul class="mdl-mega-footer__link-list">
+                <li><a href="#">Specs</a></li>
+                <li><a href="#">Tools</a></li>
+                <li><a href="#">Resources</a></li>
+              </ul>
+            </div>
+
+            <div class="mdl-mega-footer__drop-down-section">
+              <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+              <h1 class="mdl-mega-footer__heading">Technology</h1>
+              <ul class="mdl-mega-footer__link-list">
+                <li><a href="#">How it works</a></li>
+                <li><a href="#">Patterns</a></li>
+                <li><a href="#">Usage</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Contracts</a></li>
+              </ul>
+            </div>
+
+            <div class="mdl-mega-footer__drop-down-section">
+              <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+              <h1 class="mdl-mega-footer__heading">FAQ</h1>
+              <ul class="mdl-mega-footer__link-list">
+                <li><a href="#">Questions</a></li>
+                <li><a href="#">Answers</a></li>
+                <li><a href="#">Contact us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="mdl-mega-footer__bottom-section">
+            <div class="mdl-logo">Title</div>
+            <ul class="mdl-mega-footer__link-list">
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Privacy & Terms</a></li>
+            </ul>
+          </div>
+        </footer>
+      </main>
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
