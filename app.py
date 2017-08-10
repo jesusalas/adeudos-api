@@ -1,5 +1,12 @@
-from flask import Flask, render_template, json
+from flask import Flask, render_template, json, jsonify
+from flask_sqlalchemy import SQLAlchemy
+import urllib
+import urllib.parse
+
 app = Flask(__name__)
+params = urllib.parse.quote_plus("DRIVER={SQL SERVER};SERVER=DESKTOP-43GJF30;DATABASE=dsd_mazatlan;UID=sa;PWD=Dsdsistemas2012")
+app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
+db = SQLAlchemy(app)
 
 
 @app.route("/")
@@ -31,6 +38,29 @@ def todo():
 
     json_data = json.dumps(data)
     return json_data
+
+
+@app.route("/rutas")
+def mostrar_rutas():
+    rutas = db.engine.execute("SELECT id_ruta, nombre FROM cat_rutas WHERE activo = 1 AND nombre >= 100")
+    json_data = []
+    for ruta in rutas:
+        c = {
+            "id": ruta.id_ruta,
+            "nombre": ruta.nombre,
+        }
+        json_data.append(c)
+    
+    cat_cedis = db.engine.execute("SELECT id_cedis, nombre FROM cat_cedis WHERE activo = 1")
+    json_cedis = []
+    for cedis in cat_cedis:
+        c = {
+            "id": cedis.id_cedis,
+            "nombre": cedis.nombre,
+        }
+        json_cedis.append(c)
+
+    return jsonify({"rutas": json_data},{"cedis":json_cedis})
 
 
 if __name__ == '__main__':
