@@ -14,6 +14,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/materialize")
+def materialize():
+    return render_template("materialize.html")
+
+
 @app.route("/material")
 def material():
     return render_template("material.html")
@@ -62,6 +67,9 @@ def mostrar_rutas():
 
     return jsonify({"rutas": json_data},{"cedis":json_cedis})
 
+@app.errorhandler(404)
+def notFound(error):
+    return render_template("404.html"),404
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True,)
