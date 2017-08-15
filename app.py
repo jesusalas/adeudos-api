@@ -14,6 +14,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/vue")
+def vue():
+    return render_template("vue_example.html")
+
+
 @app.route("/materialize")
 def materialize():
     return render_template("materialize.html")
