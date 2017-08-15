@@ -35,8 +35,9 @@
           </ul>
         </div>
       </nav>
-      
-      <div id="test1" class="col s12"> Mapa 1</div>
+      <div id="test1" class="col s12"> 
+
+      </div>
       <div id="test2" class="col s12">Test 2</div>
       <div id="test3" class="col s12">Test 3</div>
       <div id="test4" class="col s12">Test 4</div>
@@ -55,7 +56,7 @@
         <li>
           <div class="user-view">
             <div class="background">
-              <img src="../static/img/googlemaps.png">
+              <img src="../static/img/cover.jpg">
             </div>
             <a href=""><img class="circle" src="../static/img/profile.jpg"></a>
             <a href=""><span class="white-text name">Jesus Salas</span></a>
@@ -70,7 +71,11 @@
               </div>
               <div class="collapsible-body">
                 <ul>
-                  <li><input class="input-field datepicker" type="date" placeholder="Fecha"></li>
+                  <li><li><a class="subheader">FECHA</a></li></li>
+                  <li>
+                    <input type="date" class="input-field datepicker">
+                  </li>
+                  <li><a>TIPO</a></li>
                   <li>
                     <input class="with-gap" name="group1" type="radio" id="btn_recorrido_diario"  />
                     <label for="btn_recorrido_diario">Recorrido Diario</label>
@@ -93,28 +98,42 @@
         <li>
           <ul class="collection">
             <li class="collection-item avatar active">
-              <div class="">
+                <i class="material-icons circle red">folder</i>
                 <span class="title">AFL-MZT 101</span>
                 <p>Recorrido: 120 km</p>
-              </div>
             </li>
             <li class="collection-item avatar">
-              <i class="material-icons circle">folder</i>
+              <i class="material-icons circle red">folder</i>
               <span class="title">AFL-MZT 104</span>
               <p>Recorrido: 120 km</p>
             </li>
             <li class="collection-item avatar">
-              <i class="material-icons circle green">insert_chart</i>
+              <i class="material-icons circle red">insert_chart</i>
               <span class="title">AFL-MZT 102</span>
               <p>Recorrido: 120 km</p>
             </li>
             <li class="collection-item avatar">
-              <i class="material-icons circle red">play_arrow</i>
+              <i class="material-icons circle blue darken-1">play_arrow</i>
               <span class="title">AFL-MZT 103</span>
               <p>Recorrido: 120 km</p>
             </li>
             <li class="collection-item avatar">
-              <i class="material-icons circle red">play_arrow</i>
+              <i class="material-icons circle blue darken-1">play_arrow</i>
+              <span class="title">AFL-MZT 103</span>
+              <p>Recorrido: 120 km</p>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle blue darken-1">play_arrow</i>
+              <span class="title">AFL-MZT 103</span>
+              <p>Recorrido: 120 km</p>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle brown lighten-1">play_arrow</i>
+              <span class="title">AFL-MZT 103</span>
+              <p>Recorrido: 120 km</p>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle brown lighten-1">play_arrow</i>
               <span class="title">AFL-MZT 103</span>
               <p>Recorrido: 120 km</p>
             </li>
@@ -131,7 +150,7 @@
         $( document ).ready(function(){
           
           $('#button-collapse').sideNav({
-              menuWidth: 400,
+              menuWidth: 350,
               edge: 'left',
               closeOnClick: true,
               draggable: true,
