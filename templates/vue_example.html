@@ -11,9 +11,26 @@
   <body>
     
     <div id="app">
-      <h1 id ="title">Bienvenido ${name}</h1>
+      <template v-if="name">
+        <h1>${gender == 'm' ? "Bienvenido" : "Bienvenida"}, ${name}</h1>
+        <p>Espero que disgrutes tu visita</p>
+        <p>Tu nombre al reves es: ${name.split('').reverse().join('')}</p>
+      </template>
+      <p v-else="">por favor escribe tu nombre</p>
+
+      <form action="" @submit.prevent="singUp">
       <input type="text" v-model="name" class="form-control">
-    
+      <p v-if="name == ''" class="alert alert-danger">Coloca el nombre loco</p>
+      <p v-if="name.length < 2" class="alert alert-danger">Esta muy corto</p>
+      <select v-model="gender" class="form-control">
+        <option value="m">Masculino</option>
+        <option value="h">Femenino</option>
+      </select>
+      <p v-show="name">
+        <button class="btn btn-success">Registrar</button>
+      </p>
+      </form>
+
     <hr>
     <pre>
       ${ $data |json }
@@ -26,7 +43,13 @@
         delimiters: ['${', '}'],
         el:"#app",
         data: {
-            name: "hola"
+            name: "jesus",
+            gender:"h"
+        },
+        methods:{
+          singUp:function () {
+            alert(this.name + "por favor espera mientras te registramos");
+          }
         }
       });
     </script>
