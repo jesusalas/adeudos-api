@@ -4,7 +4,7 @@ import urllib
 import urllib.parse
 
 app = Flask(__name__)
-params = urllib.parse.quote_plus("DRIVER={SQL SERVER};SERVER=DESKTOP-43GJF30;DATABASE=dsd_mazatlan;UID=sa;PWD=Dsdsistemas2012")
+params = urllib.parse.quote_plus("DRIVER={SQL SERVER};SERVER=172.16.1.109;DATABASE=dsd_mazatlan;UID=sa;PWD=Dsdsistemas2012")
 app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
 db = SQLAlchemy(app)
 
@@ -52,15 +52,19 @@ def todo():
 
 @app.route("/rutas")
 def mostrar_rutas():
-    rutas = db.engine.execute("SELECT id_ruta, nombre FROM cat_rutas WHERE activo = 1 AND nombre >= 100")
+    rutas = db.engine.execute("SELECT id_ruta, ruta FROM cat_rutas WHERE activo = 1 AND nombre >= 100")
     json_data = []
     for ruta in rutas:
         c = {
             "id": ruta.id_ruta,
-            "nombre": ruta.nombre,
+            "ruta": ruta.ruta,
         }
         json_data.append(c)
-    
+    return jsonify(json_data)
+
+
+@app.route("/cedis")
+def mostrar_cedis():
     cat_cedis = db.engine.execute("SELECT id_cedis, nombre FROM cat_cedis WHERE activo = 1")
     json_cedis = []
     for cedis in cat_cedis:
@@ -70,11 +74,13 @@ def mostrar_rutas():
         }
         json_cedis.append(c)
 
-    return jsonify({"rutas": json_data},{"cedis":json_cedis})
+    return jsonify(json_cedis)
+
 
 @app.errorhandler(404)
 def notFound(error):
-    return render_template("404.html"),404
+    return render_template("404.html"), 404
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True,)
