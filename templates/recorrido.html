@@ -33,8 +33,8 @@
           <ul class="tabs tabs-transparent tabs-fixed-width">
             <li class="tab"><a href="#test1" class="active">Mapa</a></li>
             <li class="tab"><a href="#test2">Visita</a></li>
-            <li class="tab"><a href="#test3">Clientes</a></li>
-            <li class="tab"><a href="#test4">GPS</a></li>
+            <li class="tab"><a href="#clientes">Clientes</a></li>
+            <li class="tab"><a href="#gps">GPS</a></li>
           </ul>
         </div>
       </nav>
@@ -61,7 +61,7 @@
                     <input type="date" class="input-field datepicker">
                   </li>
                   <li>
-                    <input class="with-gap" name="group1" type="radio" id="btn_recorrido_diario"  />
+                    <input class="with-gap" name="group1" type="radio" id="btn_recorrido_diario" checked="true"  />
                     <label for="btn_recorrido_diario">Recorrido Diario</label>
                   </li>
                   <li>
@@ -96,7 +96,7 @@
       </div>
       <div id="test2" class="col s12">
         <div class="container">
-          <table class="highlight">
+          <table class="highlight responsive-table">
             <thead>
               <tr>
                 <th>No</th>
@@ -130,35 +130,35 @@
           </table>
         </div>
       </div>
-      <div id="test3" class="col s12">
+      <div id="clientes" class="col s12">
         <div class="container">
-          <table class="highlight">
+          <table class="highlight responsive-table">
             <thread>
               <tr>
+                <th>No</th>
+                <th>Orden</th>
                 <th>Id</th>
                 <th>Establecimiento</th>
                 <th>Latitud</th>
                 <th>Longitud</th>
-                <th>Colonia</th>
-                <th>Tipo</th>
               </tr>
             </thread>
             <tbody>
-              <tr>
-                <td>1782</td>
-                <td>Super el Cangrejo</td>
-                <td>23.249393333333334</td>
-                <td>-106.42659666666665</td>
-                <td>Benito Juarez</td>
-                <td>Diamante</td>
+              <tr v-for="client in clients_list">
+                <td> 1 </td>
+                <td> ${ client.order } </td>
+                <td> ${ client.id } </td>
+                <td> ${ client.name } </td>
+                <td> ${ client.lat } </td>
+                <td> ${ client.long } </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-      <div id="test4" class="col s12">
+      <div id="gps" class="col s12">
         <div class="container">
-          <table class="highlight">
+          <table class="highlight responsive-table">
             <thead>
               <tr>
                 <th>No</th>
@@ -169,12 +169,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>01</td>
-                <td>09:55:37</td>
-                <td>23.249393333333334</td>
-                <td>23.249393333333334</td>
-                <td> 70 km/hr</td>
+              <tr v-for="point in points_gps_list">
+                <td> ${ point.no } </td>
+                <td> ${ point.hour } </td>
+                <td> ${ point.lat } </td>
+                <td> ${ point.long } </td>
+                <td> ${ point.speed } km/h</td>
               </tr>
             </tbody>
           </table>
@@ -229,6 +229,44 @@
             getCedis: function(){
               this.$http.get(urlCedis).then(function(response){
                   this.cedis_list = response.data;
+              });
+            }
+          },
+        });
+
+        var urlClients = "/clientes";
+        new Vue({
+          delimiters: ['${', '}'],
+          el:"#clientes",
+          created: function(){
+            this.getClients();
+          },
+          data: {
+              clients_list:[]
+          },
+          methods:{
+            getClients: function(){
+              this.$http.get(urlClients).then(function(response){
+                  this.clients_list = response.data;
+              });
+            }
+          },
+        });
+
+        var urlPointsGps = "/gps";
+        new Vue({
+          delimiters: ['${', '}'],
+          el:"#gps",
+          created: function(){
+            this.getPointsGps();
+          },
+          data: {
+              points_gps_list:[]
+          },
+          methods:{
+            getPointsGps: function(){
+              this.$http.get(urlPointsGps).then(function(response){
+                  this.points_gps_list = response.data;
               });
             }
           },

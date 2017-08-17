@@ -5,7 +5,7 @@ import urllib.parse
 
 app = Flask(__name__)
 params = urllib.parse.quote_plus(
-    "DRIVER={SQL SERVER};SERVER=DESKTOP-43GJF30;DATABASE=dsd_mazatlan;UID=sa;PWD=Dsdsistemas2012")
+    "DRIVER={SQL SERVER};SERVER=172.16.1.109;DATABASE=dsd_mazatlan;UID=sa;PWD=Dsdsistemas2012")
 app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
 db = SQLAlchemy(app)
 
@@ -20,9 +20,9 @@ def vue():
     return render_template("vue_example.html")
 
 
-@app.route("/materialize")
-def materialize():
-    return render_template("materialize.html")
+@app.route("/recorrido")
+def recorrido():
+    return render_template("recorrido.html")
 
 
 @app.route("/material")
@@ -52,15 +52,15 @@ def todo():
 
 
 @app.route("/rutas")
-def mostrar_rutas():
-    consulta = """SELECT 
+def show_routes():
+    query = """SELECT 
                 hu.id_ruta, hu.kilometrage_dia, rut.ruta 
                 FROM historial_ubicaciones hu
                 INNER JOIN cat_rutas rut ON rut.id_ruta = hu.id_ruta 
                 WHERE hu.fecha_registro = '2017-01-27' AND rut.activo = 1
                 ORDER BY rut.nombre"""
 
-    rutas = db.engine.execute(consulta)
+    rutas = db.engine.execute(query)
     json_data = []
     for ruta in rutas:
         c = {
@@ -70,6 +70,47 @@ def mostrar_rutas():
         }
         json_data.append(c)
     return jsonify(json_data)
+
+@app.route("/gps")
+def show_points_gps():
+    query = "EXEC Cargar_Mapas_GPS 19,'2017-08-05',1"
+
+    points_gps = db.engine.execute(query)
+    json_points_gps = []
+    for point in points_gps:
+        c = {
+            "no": point.No,
+            "hour": point.hora,
+            "lat": point.latitud,
+            "long": point.longitud,
+            "speed": point.velocidad,
+        }
+        json_points_gps.append(c)
+    return jsonify(json_points_gps)
+
+
+@app.route("/clientes")
+def show_clients():
+    query = """SELECT
+                dtv.id_ruta, dtv.id_cliente, dtv.orden, 
+                cli.establecimiento, dtv.latitud, dtv.longitud 
+                FROM cat_clientes_datos_venta dtv
+                INNER JOIN cat_clientes cli ON cli.id_cliente = dtv.id_cliente AND cli.activo = 1
+                WHERE dia = DATEPART(DW, '2017-08-05') AND fecha_baja IS NULL AND dtv.id_ruta = 19
+                GROUP BY dtv.id_cliente, dtv.id_ruta, dtv.id_cliente, cli.establecimiento, dtv.orden, dtv.latitud, dtv.longitud"""
+
+    clients = db.engine.execute(query)
+    json_clients = []
+    for client in clients:
+        c = {
+            "id": client.id_cliente,
+            "order": client.orden,
+            "name": client.establecimiento,
+            "lat": client.latitud,
+            "long": client.longitud,
+        }
+        json_clients.append(c)
+    return jsonify(json_clients)
 
 
 @app.route("/cedis")
