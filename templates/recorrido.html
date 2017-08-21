@@ -1,301 +1,229 @@
-<!DOCTYPE html>
-<html lang="es">
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Materialize</title>
+{% extends "base.html" %}
+{% block title %}Recorrido{% endblock title %}
+{% block style %}
+  <style>
+    div#map{
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  
+{% endblock style %}
 
-      <!-- Material Design Lite -->
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      <link rel="stylesheet" href="../static/css/materialize.min.css">
-      <style>
-        div#map{
-          width: 100%;
-          height: 100%;
-        }
-      </style>
-    </head>
-    </body>
-      <nav class="nav-extended blue">
-        <div class="nav-wrapper">
-          <a href="#" data-activates="slide-out" id="button-collapse" class="left brand-logo"><i class="material-icons">menu</i>Recorrido</a>
-          <ul id="nav-mobile" class="right">
-            <li>
-              <a class="dropdown-button" href="#!" data-activates="cedis">Mazatlan<i class="material-icons right">more_vert</i></a>
-            </li>
-          </ul>
-          <ul id="cedis" class="dropdown-content">
-            <li v-for="item in cedis_list"> <a> ${ item.name }</a></li>
-          </ul>
-        </div>
-        <div class="nav-content">
-          <ul class="tabs tabs-transparent tabs-fixed-width">
-            <li class="tab"><a href="#test1" class="active">Mapa</a></li>
-            <li class="tab"><a href="#test2">Visita</a></li>
-            <li class="tab"><a href="#clientes">Clientes</a></li>
-            <li class="tab"><a href="#gps">GPS</a></li>
-          </ul>
-        </div>
-      </nav>
-      <ul id="slide-out" class="side-nav">
-        <li>
-          <div class="user-view">
-            <div class="background">
-              <img src="../static/img/cover.jpg">
-            </div>
-            <a href=""><img class="circle" src="../static/img/profile.jpg"></a>
-            <a href=""><span class="white-text name">Jesus Salas</span></a>
-            <a href=""><span class="white-text email">jesusalas18@gmail.com</span></a>
-          </div>
-        </li>
-        <li>
-          <ul class="collapsible" data-collapsible="accordion">
-            <li>
-              <div class="collapsible-header">
-                <i class="material-icons">more_vert</i>Opciones
-              </div>
-              <div class="collapsible-body">
-                <ul>
-                  <li>
-                    <input type="date" class="input-field datepicker">
-                  </li>
-                  <li>
-                    <input class="with-gap" name="group1" type="radio" id="btn_recorrido_diario" checked="true"  />
-                    <label for="btn_recorrido_diario">Recorrido Diario</label>
-                  </li>
-                  <li>
-                    <input class="with-gap" name="group1" type="radio" id="btn_recorrido_semanal"  />
-                    <label for="btn_recorrido_semanal">Recorrido Semanal</label>  
-                  </li>
-                  <li>
-                    <input class="with-gap" name="group1" type="radio" id="btn_recorrido_total"  />
-                    <label for="btn_recorrido_total">Recorrido Total</label>
-                  </li>
-                </ul>                
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li><div class="divider"></div></li>
-        <li>
-          <ul id="routes" class="collection">
-            <li v-for="route in routes_list" class="collection-item avatar active">
-                <i class="material-icons circle red">folder</i>
-                <span class="title">${route.route}</span>
-                <p>Recorrido: ${route.kilometers} km</p>
-            </li>
-           </ul>
-        </li>
-      </ul>
-      
-      <div id="test1" class="col s12"> 
-        <div class="map">
-          <img src="../static/img/googlemaps.png">
-        </div>
-      </div>
-      <div id="test2" class="col s12">
-        <div class="container">
-          <table class="highlight responsive-table">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Establecimiento</th>
-                <th>Direccion</th>
-                <th>Hora Inicio</th>
-                <th>Hora Fin</th>
-                <th>Venta</th>
-                <th>Fuera Recorrido</th>
-                <th>Visita</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>01</td>
-                <td>ABARROTES MANUEL</td>
-                <td>TOMA DE JUAREZ 1814 FRANCISCO VILLA</td>
-                <td>09:55:37</td>
-                <td>10:55:37</td>
-                <td>1500.00</td>
-                <td>
-                  <input type="checkbox" id="fuera_recorrido" />
-                  <label for="fuera_recorrido"></label>
-                </td>
-                <td>
-                  <input type="checkbox" id="visitado" checked />
-                  <label for="visitado"></label>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div id="clientes" class="col s12">
-        <div class="container">
-          <table class="highlight responsive-table">
-            <thread>
-              <tr>
-                <th>No</th>
-                <th>Orden</th>
-                <th>Id</th>
-                <th>Establecimiento</th>
-                <th>Latitud</th>
-                <th>Longitud</th>
-              </tr>
-            </thread>
-            <tbody>
-              <tr v-for="client in clients_list">
-                <td> 1 </td>
-                <td> ${ client.order } </td>
-                <td> ${ client.id } </td>
-                <td> ${ client.name } </td>
-                <td> ${ client.lat } </td>
-                <td> ${ client.long } </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div id="gps" class="col s12">
-        <div class="container">
-          <table class="highlight responsive-table">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Hora</th>
-                <th>Latitud</th>
-                <th>Longitud</th>
-                <th>Velocidad</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="point in points_gps_list">
-                <td> ${ point.no } </td>
-                <td> ${ point.hour } </td>
-                <td> ${ point.lat } </td>
-                <td> ${ point.long } </td>
-                <td> ${ point.speed } km/h</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="fixed-action-btn horizontal">
-        <a class="btn-floating btn-large red">
-          <i class="large material-icons">mode_edit</i>
-        </a>
-        <ul>
-          <li><a class="btn-floating red"><i class="material-icons">print</i></a></li>
-          <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+{% block content %}
+    <nav class="nav-extended blue">
+      <div class="nav-wrapper">
+        <a href="#" data-activates="slide-out" id="button-collapse" class="left brand-logo"><i class="material-icons">menu</i>Recorrido</a>
+        <ul id="nav-mobile" class="right">
+          <li>
+            <a class="dropdown-button" href="#!" data-activates="cedis">Mazatlan<i class="material-icons right">more_vert</i></a>
+          </li>
+        </ul>
+        <ul id="cedis" class="dropdown-content">
+          <li v-for="item in cedis_list"> <a> ${ item.name }</a></li>
         </ul>
       </div>
-      
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script defer src="../static/js/materialize.min.js"></script>
-      <script src="../static/vue/vue.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.min.js"></script>
-      <script>
-        var urlRoutes= '/rutas';
-        new Vue({
-          delimiters: ['${', '}'],
-          el:"#routes",
-          created: function(){
-            this.getRoutes();
-          },
-          data: {
-              routes_list:[]
-          },
-          methods:{
-            getRoutes: function(){
-              this.$http.get(urlRoutes).then(function(response){
-                  this.routes_list = response.data;
-              });
-            }
-          },
-        });
-
-        var urlCedis = "/cedis";
-        new Vue({
-          delimiters: ['${', '}'],
-          el:"#cedis",
-          created: function(){
-            this.getCedis();
-          },
-          data: {
-              cedis_list:[]
-          },
-          methods:{
-            getCedis: function(){
-              this.$http.get(urlCedis).then(function(response){
-                  this.cedis_list = response.data;
-              });
-            }
-          },
-        });
-
-        var urlClients = "/clientes";
-        new Vue({
-          delimiters: ['${', '}'],
-          el:"#clientes",
-          created: function(){
-            this.getClients();
-          },
-          data: {
-              clients_list:[]
-          },
-          methods:{
-            getClients: function(){
-              this.$http.get(urlClients).then(function(response){
-                  this.clients_list = response.data;
-              });
-            }
-          },
-        });
-
-        var urlPointsGps = "/gps";
-        new Vue({
-          delimiters: ['${', '}'],
-          el:"#gps",
-          created: function(){
-            this.getPointsGps();
-          },
-          data: {
-              points_gps_list:[]
-          },
-          methods:{
-            getPointsGps: function(){
-              this.$http.get(urlPointsGps).then(function(response){
-                  this.points_gps_list = response.data;
-              });
-            }
-          },
-        });
-      </script>
+      <div class="nav-content">
+        <ul class="tabs tabs-transparent tabs-fixed-width">
+          <li class="tab"><a href="#test1" class="active">Mapa</a></li>
+          <li class="tab"><a href="#visitas">Visita</a></li>
+          <li class="tab"><a href="#clientes">Clientes</a></li>
+          <li class="tab"><a href="#gps">GPS</a></li>
+        </ul>
+      </div>
+    </nav>
+    <ul id="slide-out" class="side-nav">
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="/static/img/cover.jpg">
+          </div>
+          <a href=""><img class="circle" src="/static/img/profile.jpg"></a>
+          <a href=""><span class="white-text name">Jesus Salas</span></a>
+          <a href=""><span class="white-text email">jesusalas18@gmail.com</span></a>
+        </div>
+      </li>
+      <li>
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons">more_vert</i>Opciones
+            </div>
+            <div class="collapsible-body">
+              <ul>
+                <li>
+                  <input type="date" class="input-field datepicker">
+                </li>
+                <li>
+                  <input class="with-gap" name="group1" type="radio" id="btn_recorrido_diario" checked="true"  />
+                  <label for="btn_recorrido_diario">Recorrido Diario</label>
+                </li>
+                <li>
+                  <input class="with-gap" name="group1" type="radio" id="btn_recorrido_semanal"  />
+                  <label for="btn_recorrido_semanal">Recorrido Semanal</label>  
+                </li>
+                <li>
+                  <input class="with-gap" name="group1" type="radio" id="btn_recorrido_total"  />
+                  <label for="btn_recorrido_total">Recorrido Total</label>
+                </li>
+              </ul>                
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li><div class="divider"></div></li>
+      <li>
+        <ul id="routes" class="collection">
+          <li v-for="route in routes_list" class="collection-item avatar active">
+              <i class="material-icons circle red">folder</i>
+              <span class="title">${route.route}</span>
+              <p>Recorrido: ${route.kilometers} km</p>
+          </li>
+         </ul>
+      </li>
+    </ul>
     
-      <script>
-        $( document ).ready(function(){
-          
-          $('#button-collapse').sideNav({
-              menuWidth: 350,
-              edge: 'left',
-              closeOnClick: true,
-              draggable: true,
-              onOpen: function(el) {},
-              onClose: function(el) {},
-            }
-          );
+    <div id="test1" class="col s12"> 
+      <div class="map">
+        <img src="/static/img/googlemaps.png">
+      </div>
+    </div>
+    <div id="visitas" class="col s12">
+      <div class="container">
+        <table class="highlight">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Establecimiento</th>
+              <th>Orden</th>
+              <th>Hora Inicio</th>
+              <th>Hora Fin</th>
+              <th>Venta</th>
+              <th>Fuera Recorrido</th>
+              <th>Visita</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in visits_list">
+              <td>${ index + 1 } </td>
+              <td>${ item.client_name }</td>
+              <td>${ item.order }</td>
+              <td>${ item.hour_begin }</td>
+              <td>${ item.hour_finish }</td>
+              <td>${ item.sale_count }</td>
+              <td>
+                <div v-if="item.outside_route == 1">
+                  <input type="checkbox">
+                  <label></label>
+                </div>
+                <div v-else>
+                  <input type="checkbox" checked="true">
+                  <label></label>
+                </div>
+              </td>
+              <td>
+                <div v-if="item.visit_it == 'NO VISITO'">
+                  <input type="checkbox" />
+                  <label></label>
+                </div>
+                <div v-else>
+                  <input type="checkbox" checked="true" />
+                  <label></label>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="clientes" class="col s12">
+      <div class="container">
+        <table class="highlight">
+          <thead>
+            <tr>
+              <th>Orden</th>
+              <th>Id</th>
+              <th>Establecimiento</th>
+              <th>Latitud</th>
+              <th>Longitud</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="client in clients_list">
+              <td> ${ client.order } </td>
+              <td> ${ client.id } </td>
+              <td> ${ client.name } </td>
+              <td> ${ client.lat } </td>
+              <td> ${ client.long } </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="gps" class="col s12">
+      <div class="container">
+        <table class="highlight">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Hora</th>
+              <th>Latitud</th>
+              <th>Longitud</th>
+              <th>Velocidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="point in points_gps_list">
+              <td> ${ point.no } </td>
+              <td> ${ point.hour } </td>
+              <td> ${ point.lat } </td>
+              <td> ${ point.long } </td>
+              <td> ${ point.speed } km/h</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-          $('.datepicker').pickadate({
-            selectMonths: true, 
-            selectYears: 20, 
-            today: 'Today',
-            clear: 'Clear',
-            close: 'Ok',
-            closeOnSelect: false 
-          });
+    <div class="fixed-action-btn horizontal">
+      <a class="btn-floating btn-large red">
+        <i class="large material-icons">mode_edit</i>
+      </a>
+      <ul>
+        <li><a class="btn-floating red"><i class="material-icons">print</i></a></li>
+        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+      </ul>
+    </div>
+{% endblock content %}
 
+{% block scripts %}
+    <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+    <script defer src="/static/js/materialize.min.js"></script>
+    <script src="/static/vue/vue.js"></script>
+    <script src="/static/js/vue-resource.min.js"></script>
+    <script src="/static/js/recorrido_vue.js"></script>
+    <script>
+      $( document ).ready(function(){
+        
+        $('#button-collapse').sideNav({
+            menuWidth: 350,
+            edge: 'left',
+            closeOnClick: true,
+            draggable: true,
+            onOpen: function(el) {},
+            onClose: function(el) {},
+          }
+        );
+
+        $('.datepicker').pickadate({
+          selectMonths: true, 
+          selectYears: 20, 
+          today: 'Today',
+          clear: 'Clear',
+          close: 'Ok',
+          closeOnSelect: false 
         });
-      </script>
-    </body>
-</html>
+
+      });
+    </script>
+{% endblock scripts %}

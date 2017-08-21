@@ -5,7 +5,8 @@ import urllib.parse
 
 app = Flask(__name__)
 params = urllib.parse.quote_plus(
-    "DRIVER={SQL SERVER};SERVER=172.16.1.109;DATABASE=dsd_mazatlan;UID=sa;PWD=Dsdsistemas2012")
+    "DRIVER={SQL SERVER};SERVER=DESKTOP-43GJF30;DATABASE=dsd_mazatlan;UID=sa;PWD=Dsdsistemas2012")
+#       "DRIVER={SQL SERVER};SERVER=172.16.1.109;DATABASE=dsd_mazatlan;UID=sa;PWD=Dsdsistemas2012")
 app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
 db = SQLAlchemy(app)
 
@@ -89,6 +90,28 @@ def show_points_gps():
     return jsonify(json_points_gps)
 
 
+@app.route("/visitas")
+def show_visits():
+    query = "EXEC Rep_Recorrido 2, 7,'2017-08-01',''"
+
+    visits = db.engine.execute(query)
+    json_visits = []
+    for visit in visits:
+        c = {
+            "id_route": visit.id_ruta,
+            "id_client": visit.id_cliente,
+            "client_name": visit.establecimiento,
+            "order": visit.orden,
+            "hour_begin": visit.hora_inicio,
+            "hour_finish": visit.hora_fin,
+            "sale_total": visit.venta,
+            "outside_route": visit.programados,
+            "visit_it": visit.justificacion,
+        }
+        json_visits.append(c)
+    return jsonify(json_visits)
+
+
 @app.route("/clientes")
 def show_clients():
     query = """SELECT
@@ -96,8 +119,9 @@ def show_clients():
                 cli.establecimiento, dtv.latitud, dtv.longitud 
                 FROM cat_clientes_datos_venta dtv
                 INNER JOIN cat_clientes cli ON cli.id_cliente = dtv.id_cliente AND cli.activo = 1
-                WHERE dia = DATEPART(DW, '2017-08-05') AND fecha_baja IS NULL AND dtv.id_ruta = 19
-                GROUP BY dtv.id_cliente, dtv.id_ruta, dtv.id_cliente, cli.establecimiento, dtv.orden, dtv.latitud, dtv.longitud"""
+                WHERE dia = DATEPART(DW, '2017-08-04') AND fecha_baja IS NULL AND dtv.id_ruta = 19
+                GROUP BY dtv.id_cliente, dtv.id_ruta, dtv.id_cliente, cli.establecimiento, dtv.orden, dtv.latitud, dtv.longitud
+                ORDER BY dtv.orden"""
 
     clients = db.engine.execute(query)
     json_clients = []
@@ -115,8 +139,7 @@ def show_clients():
 
 @app.route("/cedis")
 def mostrar_cedis():
-    cat_cedis = db.engine.execute(
-        "SELECT id_cedis, nombre FROM cat_cedis WHERE activo = 1 ORDER BY orden")
+    cat_cedis = db.engine.execute("SELECT id_cedis, nombre FROM cat_cedis WHERE activo = 1 ORDER BY orden")
     json_cedis = []
     for cedis in cat_cedis:
         c = {
