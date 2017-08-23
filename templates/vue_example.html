@@ -19,16 +19,21 @@
       </template>
       <p v-else="">por favor escribe tu nombre</p>
 
-      <form action="" @submit.prevent="singUp">
+      <form @submit.prevent="singUp(false, $event)">
         <input type="text" v-model="name" class="form-control">
         <p v-if="name == ''" class="alert alert-danger">Coloca el nombre loco</p>
         <p v-if="name.length < 2" class="alert alert-danger">Esta muy corto</p>
-        <select v-model="gender" class="form-control">
-          <option value="m">Masculino</option>
-          <option value="h">Femenino</option>
-        </select>
+        <option value=""></option>
+          <label for="">Masculino<input type="radio" value="m" v-model="gender" checked="true"></label>
+          <label for="">Femenino<input type="radio" value="f" v-model="gender"></label>
+          
+          <p>Cuantos años de experiencia tienes con PHP ?</p>
+          <p>Respuesta: ${years_php}</p>
+          <button type="button" class="btn" @click="years_php ++">+</button>
+          <button type="button" class="btn" @click="years_php --">-</button>
         <p v-show="name">
           <button class="btn btn-success">Registrar</button>
+          <button class="btn btn-success" @click="singUp(true, $event)">Registrate y sal del sistema</button>
         </p>
       </form>
       <hr>
@@ -50,38 +55,8 @@
       </div>
       
     </div>
-
-    <script>
-      //Vue.config.delimiters = ["${", "}"];
-      //var urlUsers= 'https://randomuser.me/api/?results=5000';
-      var urlUsers= '/rutas';
-      new Vue({
-        delimiters: ['${', '}'],
-        el:"#app",
-        created: function(){
-          this.getUsers();
-        },
-        data: {
-            name: "jesus",
-            gender:"h",
-            lists:[]
-        },
-        methods:{
-          singUp:function () {
-            alert(this.name + "por favor espera mientras te registramos");
-          },
-          getUsers: function(){
-            this.$http.get(urlUsers).then(function(response){
-                this.lists = response.data;
-            });
-          }
-        },
-      });
-
-     
-
-     
-    </script>
+    
+    <script src="static/js/curso_vue.js"></script>
     
   </body>
 </html>
