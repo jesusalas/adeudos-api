@@ -29,11 +29,20 @@
           
           <p>Cuantos años de experiencia tienes con PHP ?</p>
           <p>Respuesta: ${years_php}</p>
-          <button type="button" class="btn" @click="years_php ++">+</button>
-          <button type="button" class="btn" @click="years_php --">-</button>
+          <button type="button" 
+                  :class="{btn:true, 'btn-danger':years_php > 10}" 
+                  :style="calculateFontSize()"
+                  @click="getYearsPhp(true)"
+                  >+</button>
+          <button type="button" class="btn" :disabled="years_php == 0" @click="getYearsPhp(false)">-</button>
+          <p>Cuantos años de experiencia tienes con Java Script ?</p>
+          <p>Respuesta: ${years_js}</p>
+          <button type="button" :class ="{btn:true, 'btn-danger':years_js > 10}" @click="getYearsJs(true)">+</button>
+          <button type="button" class="btn" :disabled="years_js == 0" @click="getYearsJs(false)">-</button>
         <p v-show="name">
           <button class="btn btn-success">Registrar</button>
-          <button class="btn btn-success" @click="singUp(true, $event)">Registrate y sal del sistema</button>
+          <button class="btn btn-success" @click="singUp(true, $event)">Registrate y sal del sistema</button
+          >
         </p>
       </form>
       <hr>
