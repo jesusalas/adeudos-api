@@ -5,8 +5,8 @@ import urllib.parse
 
 app = Flask(__name__)
 params = urllib.parse.quote_plus(
-    "DRIVER={SQL SERVER};SERVER=DESKTOP-43GJF30;DATABASE=dsd_mazatlan;UID=sa;PWD=Dsdsistemas2012")
-#       "DRIVER={SQL SERVER};SERVER=172.16.1.109;DATABASE=dsd_mazatlan;UID=sa;PWD=Dsdsistemas2012")
+#    "DRIVER={SQL SERVER};SERVER=DESKTOP-43GJF30;DATABASE=dsd_mazatlan;UID=sa;PWD=Dsdsistemas2012")
+       "DRIVER={SQL SERVER};SERVER=172.16.1.109;DATABASE=dsd_mazatlan;UID=sa;PWD=Dsdsistemas2012")
 app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
 db = SQLAlchemy(app)
 
@@ -157,4 +157,4 @@ def notFound(error):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True,)
+    app.run(host='0.0.0.0', debug=True, port=5000)
