@@ -21,6 +21,11 @@ def vue():
     return render_template("vue_example.html")
 
 
+@app.route("/vue_v2")
+def vue_v2():
+    return render_template("vue_example_2.html")
+
+
 @app.route("/recorrido")
 def recorrido():
     return render_template("recorrido.html")
