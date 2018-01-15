@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>VUEjs v2 V-BIND</title>
+</head>
+<body>
+	<div id="bind-main">
+		<input type="text" v-model="info">
+		<p v-bind:title="info">Texto de relleno ... ${info}</p>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.0/vue.js"></script>
+   	<script src="static/js/vue/bind.js"></script> 
+
+</body>
+</html>

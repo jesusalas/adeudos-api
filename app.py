@@ -25,6 +25,10 @@ def vue():
 def vue_v2():
     return render_template("vue_example_2.html")
 
+@app.route("/bind")
+def bind():
+    return render_template("v-bind.html")
+
 
 @app.route("/recorrido")
 def recorrido():
