@@ -12,7 +12,7 @@ new Vue({
    },
    methods:{
       getUsers: function(){
-         this.$http.get(urlUsers).then(function(response){
+         axios.get(urlUsers).then(response => {
             this.list = response.data.results;
          });
       }
