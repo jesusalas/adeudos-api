@@ -1,5 +1,5 @@
 
-var urlUsers = 'https://randomuser.me/api/?results=10';
+var urlUsers = '/rutas';
 
 new Vue({
    delimiters: ['${', '}'],
@@ -13,7 +13,7 @@ new Vue({
    methods:{
       getUsers: function(){
          axios.get(urlUsers).then(response => {
-            this.list = response.data.results;
+            this.list = response.data;
          });
       }
    }
