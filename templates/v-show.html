@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>VUEjs V-SHOW</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<div id="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Suscribete a nuestro boletin</h3>
+				</div>
+				<div class="col-md-5">
+					<input type="text" v-model="email" class="form-control">
+				</div>
+				<div class="col-md-1">
+					<input type="submit" v-show="email" class="btn btn-primary">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.0/vue.js"></script>
+   	<script src="static/js/vue/show.js"></script> 
+
+</body>
+</html>

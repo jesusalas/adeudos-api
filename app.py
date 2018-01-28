@@ -36,6 +36,11 @@ def ajax():
     return render_template("ajax.html")
 
 
+@app.route("/show")
+def show():
+    return render_template("v-show.html")
+
+
 @app.route("/recorrido")
 def recorrido():
     return render_template("recorrido.html")
