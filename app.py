@@ -41,6 +41,11 @@ def show():
     return render_template("v-show.html")
 
 
+@app.route("/template")
+def template():
+    return render_template("template.html")
+
+
 @app.route("/recorrido")
 def recorrido():
     return render_template("recorrido.html")

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>VUEjs V-IF V-ELSE TEMPLATE</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<div id="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5">
+					<template v-if="!message">
+						<h3>Escribe tu sugerencia</h3>
+						<p>El equipo de soporte responde en maximo 24 horas</p>
+						<p><em>Podrias utilizar twitter para comunicarte</em></p>
+					</template>
+					<h3 v-else="message">Presiona ENTER para enviar</h3>
+					<textarea class="form-control" v-model="message"></textarea>
+				</div>
+				<div class="col-md-7">
+					<h3>JSON</h3>
+					<pre>
+						${ $data }
+					</pre>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.0/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+   	<script src="static/js/vue/template.js"></script> 
+
+</body>
+</html>
