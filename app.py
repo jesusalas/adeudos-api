@@ -46,6 +46,11 @@ def template():
     return render_template("template.html")
 
 
+@app.route("/eventos")
+def eventos():
+    return render_template("eventos.html")
+
+
 @app.route("/recorrido")
 def recorrido():
     return render_template("recorrido.html")
