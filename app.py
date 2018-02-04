@@ -51,6 +51,11 @@ def eventos():
     return render_template("eventos.html")
 
 
+@app.route("/filtros")
+def filtros():
+    return render_template("filtros.html")
+
+
 @app.route("/recorrido")
 def recorrido():
     return render_template("recorrido.html")
