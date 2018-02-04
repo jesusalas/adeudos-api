@@ -56,6 +56,11 @@ def filtros():
     return render_template("filtros.html")
 
 
+@app.route("/componente")
+def componente():
+    return render_template("componente.html")
+
+
 @app.route("/recorrido")
 def recorrido():
     return render_template("recorrido.html")

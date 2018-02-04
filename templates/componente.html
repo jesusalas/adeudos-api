@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <title>VUEjs| componentes</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+   <div id="main" class="container">
+      <div class="row">
+         <div class="col-sm-6">
+            <h1>Clientes</h1>
+            <common-list v-bind:list="clients"></common-list>
+         </div>
+         <div class="col-sm-6">
+            <h1>Rutas</h1>
+            <common-list :list="cedis"></common-list>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-sm-12">
+            <h1>JSON</h1>
+            <pre>
+               ${ $data }
+            </pre>
+         </div>
+      </div>
+      
+   </div>
+   <script src="/static/vue/vue.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+   <script src="static/js/vue/componente.js"></script> 
+
+</body>
+</html>
