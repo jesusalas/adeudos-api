@@ -61,6 +61,11 @@ def componente():
     return render_template("componente.html")
 
 
+@app.route("/clases")
+def clases():
+    return render_template("clases.html")
+
+
 @app.route("/recorrido")
 def recorrido():
     return render_template("recorrido.html")

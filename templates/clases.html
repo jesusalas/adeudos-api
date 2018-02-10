@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <title>VUEjs| componentes</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+<body>
+   <div id="main" class="container">
+
+      <div class="row">
+         <div class="col-sm-12 mb-3" >
+            <h1>Tareas</h1>
+            <ul class="list-group">
+               <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Aprender Vue.js
+                  <span>
+                     <i class="material-icons">create</i>
+                     <i class="material-icons">delete</i>
+                  </span>
+               </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Suscribirse en Styde
+                  <span>
+                     <i class="material-icons">done</i>
+                     <i class="material-icons">close</i>
+                  </span>
+               </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" :class="{active:isActive}">
+                  <del>Crear una API</del>
+                  <span>
+                     <i v-on:click="isActive = !isActive" class="material-icons">create</i>
+                     <i class="material-icons">delete</i>
+                  </span>
+               </li>
+            </ul>
+         </div>
+         <hr>
+      </div>
+
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="input-group mb-3">
+               <input type="text" class="form-control" placeholder="Escribe una tarea">
+               <div class="input-group-append">
+                  <button class="btn btn-primary" type="button">Agregar</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="row">
+  <div class="col-4">
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
+      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
+      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+    </div>
+  </div>
+</div>
+
+      <div class="row">
+         <div class="col-sm-6">
+            <h1>Clientes</h1>
+            <ul class="list-group">
+               <li class="list-group-item" v-on:click="isActive = !isActive" :class="{active:isActive}">Jesus</li>
+               <li class="list-group-item" :class="{active:isActive}">Carlos</li>
+               <li class="list-group-item" :class="{active:isActive}">Elias</li>
+               <li class="list-group-item" :class="{active:isActive}">Daniel</li>
+               <li class="list-group-item" :class="{active:isActive}">Kevin</li>
+            </ul>
+         </div>
+         
+      </div>
+      
+   </div>
+   <script src="/static/vue/vue.js"></script>
+   <script src="static/js/vue/clases.js"></script> 
+
+</body>
+</html>
