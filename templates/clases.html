@@ -6,6 +6,26 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+   <style>
+      li>div{display: inline-block;float: right;}
+      i{
+         color: #0069d9;
+         cursor: pointer;
+      }
+      li.completed>span.description{
+         text-decoration: line-through;
+      }
+      li.completed>div>i{
+         color: #6c757d;
+      }
+      i.unchecked:after{
+         content: 'radio_button_unchecked';
+      }
+      i.checked:after{
+         content: 'check_circle';
+         color: #6c757d;
+      }
+   </style>
 </head>
 <body>
    <div id="main" class="container">
@@ -14,7 +34,18 @@
          <div class="col-sm-12 mb-3" >
             <h1>Tareas</h1>
             <ul class="list-group">
-               <li class="list-group-item d-flex justify-content-between align-items-center">
+               <li v-for="task in tasks" class="list-group-item" :class="{editing: task.editing, completed: !task.pending}">
+                  <i class="material-icons" :class="task.pending ? 'unchecked' : 'checked'"></i>
+                  <span class="description">${ task.description }</span>
+                  <div>
+                     <i class="material-icons text-right">create</i>
+                     <i class="material-icons text-right">delete</i>
+                  </div>
+               </li>
+            </ul>
+            <h1></h1>
+            <ul class="list-group">
+               <li class="list-group-item editing d-flex justify-content-between align-items-center">
                   Aprender Vue.js
                   <span>
                      <i class="material-icons">create</i>
