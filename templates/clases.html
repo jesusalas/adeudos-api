@@ -8,23 +8,23 @@
       rel="stylesheet">
    <style>
       li>div{display: inline-block;float: right;}
-      i{
-         color: #0069d9;
-         cursor: pointer;
-      }
-      li.completed>span.description{
-         text-decoration: line-through;
-      }
-      li.completed>div>i{
-         color: #6c757d;
-      }
-      i.unchecked:after{
-         content: 'radio_button_unchecked';
-      }
-      i.checked:after{
-         content: 'check_circle';
-         color: #6c757d;
-      }
+      i{color: #0069d9;cursor: pointer;}
+      input:focus {outline: 0 none;}
+      
+      li>i:after{content: 'radio_button_unchecked';}
+      li>div>i.first:after{content: 'create'}
+      li>div>i.second:after{content: 'delete'}
+      
+      li.editing{background-color: #F2F2F2;}
+      li.editing>input{background-color: #F2F2F2;border-width:0;}
+      li.editing>div>i.first:after{content: 'done'}
+      li.editing>div>i.second:after{content: 'close';}
+
+      li.completed>span.description{text-decoration: line-through;}
+      li.completed>i:after{content:'check_circle'; color: #6c757d;}
+      li.completed>div>i{color: #6c757d;}
+      li.completed>div>i.first:after{content: 'create'}
+      li.completed>div>i.second:after{content: 'delete'}
    </style>
 </head>
 <body>
@@ -35,15 +35,18 @@
             <h1>Tareas</h1>
             <ul class="list-group">
                <li v-for="task in tasks" class="list-group-item" :class="{editing: task.editing, completed: !task.pending}">
-                  <i class="material-icons" :class="task.pending ? 'unchecked' : 'checked'"></i>
-                  <span class="description">${ task.description }</span>
+                  <i class="material-icons"></i>
+                  <span v-if="!task.editing" class="description">${ task.description }</span>
+                  <input v-else v-model="task.description" type="text">
                   <div>
-                     <i class="material-icons text-right">create</i>
-                     <i class="material-icons text-right">delete</i>
+                     <i class="material-icons first"></i>
+                     <i class="material-icons second"></i>
                   </div>
                </li>
             </ul>
-            <h1></h1>
+            
+
+            <h1>Tareas Respaldo</h1>
             <ul class="list-group">
                <li class="list-group-item editing d-flex justify-content-between align-items-center">
                   Aprender Vue.js
