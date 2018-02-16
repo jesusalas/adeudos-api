@@ -11,9 +11,28 @@ new Vue({
          });
 
          this.new_task = '';
+      },
+      toggleStatus: function(task){
+         task.pending  = !task.pending;
+
+      },
+      editTask: function(task){
+         this.tasks.forEach(function(task){
+            task.editing = false;
+         });
+         this.draft = task.description;
+         task.editing = true;
+      },
+      updateTask: function(task){
+         task.description = this.draft;
+         task.editing = false;
+      },
+      discardTask: function(task){
+         task.editing = false;
       }
    },
    data:{
+      draft: '',
       new_task: '',
       isActive: false,
       tasks: [
@@ -25,7 +44,7 @@ new Vue({
          {
             description: 'Suscribirse a Styde.net',
             pending: true,
-            editing: true
+            editing: false
          },
          {
             description: 'Grabar lección de Vue',

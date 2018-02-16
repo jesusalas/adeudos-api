@@ -17,14 +17,10 @@
       
       li.editing{background-color: #F2F2F2;}
       li.editing>input{background-color: #F2F2F2;border-width:0;}
-      li.editing>div>i.first:after{content: 'done'}
-      li.editing>div>i.second:after{content: 'close';}
 
       li.completed>span.description{text-decoration: line-through;}
       li.completed>i:after{content:'check_circle'; color: #6c757d;}
       li.completed>div>i{color: #6c757d;}
-      li.completed>div>i.first:after{content: 'create'}
-      li.completed>div>i.second:after{content: 'delete'}
    </style>
 </head>
 <body>
@@ -34,13 +30,22 @@
             <h1>Tareas</h1>
             <ul class="list-group">
                <li v-for="task in tasks" class="list-group-item" :class="{editing: task.editing, completed: !task.pending}">
-                  <i class="material-icons"></i>
-                  <span v-if="!task.editing" class="description">${ task.description }</span>
-                  <input v-else v-model="task.description" type="text"  class="col-sm-9">
-                  <div>
-                     <i class="material-icons first"></i>
-                     <i class="material-icons second"></i>
-                  </div>
+                  <i @click="toggleStatus(task)" class="material-icons"></i>
+                  <template v-if="!task.editing">
+                     <span class="description">${ task.description }</span>
+                     <div>
+                        <i @click="editTask(task)" class="material-icons">create</i>
+                        <i class="material-icons">delete</i>
+                     </div>
+                  </template>
+                  <template v-else>
+                     <input v-model="draft" type="text"  class="col-sm-9">
+                     <div>
+                        <i @click="updateTask(task)" class="material-icons">done</i>
+                        <i @click="discardTask(task)" class="material-icons">close</i>
+                     </div>
+                  </template>
+
                </li>
             </ul>
          </div>
@@ -58,7 +63,7 @@
          </div>
       </div>
    </div>
-         
+
    <script src="/static/vue/vue.js"></script>
    <script src="static/js/vue/clases.js"></script> 
 
