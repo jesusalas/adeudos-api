@@ -2,7 +2,19 @@
 new Vue({
    delimiters: ['${', '}'],
    el:"#main",
+   methods: {
+      createTask: function(){
+         this.tasks.push({
+            description: this.new_task,
+            pending: true,
+            editing: false
+         });
+
+         this.new_task = '';
+      }
+   },
    data:{
+      new_task: '',
       isActive: false,
       tasks: [
          {
