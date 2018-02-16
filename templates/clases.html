@@ -21,6 +21,8 @@
       li.completed>span.description{text-decoration: line-through;}
       li.completed>i:after{content:'check_circle'; color: #6c757d;}
       li.completed>div>i{color: #6c757d;}
+
+      p.deleteCompleted{cursor: pointer; color: red;}
    </style>
 </head>
 <body>
@@ -29,13 +31,13 @@
          <div class="col-sm-12 mb-3" >
             <h1>Tareas</h1>
             <ul class="list-group">
-               <li v-for="task in tasks" class="list-group-item" :class="{editing: task.editing, completed: !task.pending}">
+               <li v-for="(task, index) in tasks" class="list-group-item" :class="{editing: task.editing, completed: !task.pending}">
                   <i @click="toggleStatus(task)" class="material-icons"></i>
                   <template v-if="!task.editing">
                      <span class="description">${ task.description }</span>
                      <div>
                         <i @click="editTask(task)" class="material-icons">create</i>
-                        <i class="material-icons">delete</i>
+                        <i @click="deleteTask(index)" class="material-icons">delete</i>
                      </div>
                   </template>
                   <template v-else>
@@ -61,6 +63,11 @@
                </div>
             </form>
          </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 text-right">
+          <p @click="deleteCompleted" class="deleteCompleted">Eliminar Tareas Completadas</p>
+        </div>
       </div>
    </div>
 
