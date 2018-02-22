@@ -26,9 +26,9 @@
       <div class="nav-content">
         <ul class="tabs tabs-transparent tabs-fixed-width">
           <li class="tab"><a href="#test1" class="active">Mapa</a></li>
-          <li class="tab"><a href="#visitas">Visita</a></li>
-          <li class="tab"><a href="#clientes">Clientes</a></li>
-          <li class="tab"><a href="#gps">GPS</a></li>
+          <li class="tab"><a href="#visitas" v-on:click="getData('visitas')">Visita</a></li>
+          <li class="tab"><a href="#clientes" v-on:click="getData('clientes')">Clientes</a></li>
+          <li class="tab"><a href="#gps" v-on:click="getData('gps')">GPS</a></li>
         </ul>
       </div>
     </nav>
